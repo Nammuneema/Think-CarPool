@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.grad{
+            background: linear-gradient(to bottom,rgba(10, 168, 241, 0.582),rgb(59, 104, 124));
+            margin-bottom: .1%;
+        
+        }
+
+.searchHome
+{
+    position:absolute;
+    top : 46%;
+    left :23.5%;
+
+}
+.registration
+{
+    position:absolute;
+    width:50%;
+    left:25%;
+    
+}
+.login{
+    
+    position: absolute;
+    top: 28%;
+    left: 40%;
+    
+}
+
+body {
+    background: url('./assets/road-min.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+  .profile-pic {
+	position: relative;
+	display: inline-block;
+}
+
+  .profile-pic:hover .edit {
+    display: block;
+    opacity: 0.1;
+}
+
+.edit {
+	padding-top: 7px;	
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+}
+
+.edit a {
+	color: rgb(133, 32, 32);
+}

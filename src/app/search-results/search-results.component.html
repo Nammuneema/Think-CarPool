@@ -1,0 +1,23 @@
+<div class="table-responsive  rounded"  >
+  <table class="table table-striped table-light table-hover">
+    <thead class="table-info ">
+    <tr><th scope="col">Name</th>
+      <th scope="col">Source</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Date</th>
+      <th scope="col">Car Type</th>
+      <th scope="col">Total Seats</th>
+      <th scope="col">Seats left</th><tr>
+        </thead>
+      <tr *ngFor="let details of resultDemo" >
+         <td><a href="#">{{details.userName}}</a></td>
+        <td>{{details.source}}</td>
+        <td>{{details.destination}}</td>
+        <td>{{details.date}}</td>
+        <td>{{details.carType}}</td>
+        <td>{{details.totalSeats}}</td>
+        <td>{{details.availableSeats}}</td>
+                
+      </tr>
+  </table>
+</div>
