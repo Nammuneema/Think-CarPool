@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
+    
+    <!-- jQuery library -->
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <meta charset="utf-8">
   <title>Myap</title>
   <base href="/">
@@ -9,23 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body onload="myFunction()">
+<body >
   <div class="container-fluid">
   <app-root><i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size:48px; position:absolute;top:50%;left: 49%;"></i>
     <span class="sr-only">Loading...</span>
     </app-root>
   </div>
-  <script>
-      var myVar;
-      
-      function myFunction() {
-          myVar = setTimeout(showPage, Math.random()*1000);
-      }
-      
-      function showPage() {
-        document.getElementsByClassName("fa-spinner").style.display=none;
-        //document.getElementById("myDiv").style.display = "block";
-      }
-      </script>
+  
 </body>
 </html>

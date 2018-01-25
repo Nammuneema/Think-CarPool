@@ -1,7 +1,7 @@
 export class OfferedRide
 {
-    private _rideId : number;
-    userName : string;
+    rideId : number;
+   // userName : string;
     source : string;
     destination : string; 
     date : string;
@@ -9,11 +9,11 @@ export class OfferedRide
     availableSeats : number;
     totalSeats : number;
 
-    constructor(userName : string, source : string, destination : string
+    constructor(/*userName : string,*/ source : string, destination : string
         ,date : string,carType : string,
         availableSeats : number , totalSeats : number)
         {
-            this.userName = userName;
+            //this.userName = userName;
             this.source = source;
             this.destination = destination;
             this.date = date;
@@ -23,12 +23,12 @@ export class OfferedRide
 
         }
 
-        set rideId (rideId : number) {
-            this._rideId = rideId;
-        }
+        // set rideId (rideId : number) {
+        //     this._rideId = rideId;
+        // }
 
-        get rideId() : number {
-            return this._rideId;
-        }
+        // get rideId() : number {
+        //     return this._rideId;
+        // }
     
 }

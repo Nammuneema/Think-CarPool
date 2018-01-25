@@ -1,3 +1,6 @@
+import { SearchDataService } from './search-data.service';
+import { RequestService } from './request.service';
+import { TestService } from './test.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +13,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HttpModule } from '@angular/http'
+import { FormsModule } from '@angular/forms'
+import { NotFoundComponent } from './not-found/not-found.component';
+import { OfferedRide } from './search-results/OfferedRide';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 const appRoutes: Routes = [
   {
@@ -38,10 +47,35 @@ const appRoutes: Routes = [
     data: { title: 'UserName' }
   },
   {
-    path: '**',
+    path: '',
     redirectTo: 'Home', pathMatch: 'full',
     data: { title: 'Homepage' }
-  }
+  },
+
+  {
+    path : 'notFound',
+    component : NotFoundComponent,
+    data : {title : "NOt Found"}
+  },
+
+  {
+    path : 'offerRide',
+    component : OfferrideComponent,
+    data : {title :"Offer Ride"}
+
+  },
+  {
+    path : "dashboard",
+    component : DashboardComponent,
+    data :{title:"DashBoard"}
+  },
+
+  {
+    path: '**',
+    redirectTo : 'notFound' ,
+    data: {title: "Not Found"} 
+  },
+
 ];
 
 
@@ -55,16 +89,25 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     SearchResultsComponent,
-    ProfileComponent
+    ProfileComponent,
+    NotFoundComponent,
+    OfferrideComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [TestService,RequestService,SearchDataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+  constructor(private searchDataService : SearchDataService){}
+}

@@ -9,7 +9,7 @@
 .searchHome
 {
     position:absolute;
-    top : 46%;
+    top : 35%;
     left :23.5%;
 
 }
@@ -25,6 +25,14 @@
     position: absolute;
     top: 28%;
     left: 40%;
+    
+}
+
+.dashboard{
+    
+    position: absolute;
+    top: 28%;
+    left: 22.5%;
     
 }
 

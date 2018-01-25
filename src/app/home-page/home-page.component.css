@@ -4,3 +4,11 @@
     position: fixed;
     height: 60%;
 }
+
+
+.offerRide
+{
+    position: absolute;
+    top: 160%;
+    left : 35%
+}

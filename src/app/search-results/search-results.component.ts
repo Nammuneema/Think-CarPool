@@ -1,31 +1,37 @@
+import { SearchDataService } from './../search-data.service';
+import { ActivatedRoute } from '@angular/router';
+import { OnDestroy } from '@angular/core';
+import { RequestService } from './../request.service';
+import { SearchQuery } from './searchQuery';
 import { OfferedRide } from './OfferedRide';
 import { Component, OnInit } from '@angular/core';
 import { OfferrideComponent } from '../offerride/offerride.component';
 import { offerRiderDetails } from './OfferRiderDetails';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+  styleUrls: ['./search-results.component.css'],
+ 
 })
-export class SearchResultsComponent {
+export class SearchResultsComponent implements OnInit {
+  @Input('id') data : any[]
+  resultDemo : OfferedRide[] ;
+ 
   
-  resultDemo : OfferedRide[] =[];
   
-  
-  constructor()
+  constructor(private searchRequest : RequestService , private route : ActivatedRoute , private searchDataSearvice : SearchDataService )
+  {}
+   
+
+  ngOnInit()
   {
-  for(let i=0;i<10;i++) {
-    this.resultDemo.push(new OfferedRide("Nam"+i,"pune"+i,"indore"+i,"2017-02-1"+i,"Suv",(i+3)%6,6));
-    console.log(i);
+    this.resultDemo = this.searchDataSearvice.data;
+    console.log(this.resultDemo)  
   }
 
-  for(let i=0;i<10;i++) {
-    this.resultDemo.push(new OfferedRide("Nam"+(2*i),"pune"+i,"indore"+i,"2017-03-1"+i,"Suv",(i+3)%6,6));
-    console.log(i);
-  }
-}
+
+ 
   
-    
-
 }

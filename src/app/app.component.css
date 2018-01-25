@@ -8,3 +8,7 @@
     margin-top: 3%;
     width: 40%;
 }
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }

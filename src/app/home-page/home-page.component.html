@@ -1,15 +1,30 @@
 <div class="row searchHome">
   <div class="col">
-    <form action="/Result" class="form-inline">
-      <input class="form-control" type="search" name="source" id="source"  placeholder="Leave From" required="">
-      &emsp;<input class="form-control" type="search" name="destination" id="destination"  placeholder="Going To" required="">
-      &emsp;<input class="form-control" type="date" name="date" id="date"  placeholder="Going To" required="">
+    <form class="form-inline" (ngSubmit)="onSearch(f)" #f="ngForm">
+      <input class="form-control" type="search" ngModel name="source" id="source"  placeholder="Leave From" required="">
+      &emsp;<input class="form-control" type="search" ngModel name="destination" id="destination"  placeholder="Going To" required="">
+      &emsp;<input class="form-control" type="date" ngModel name="date" id="date"  placeholder="Going To" required="">
       
       &emsp;<button class="btn btn-primary" type="submit">
           <i>Search</i>
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
+        <br>
+        <br>
+        <br style="margin-bottom: 50%">
+          
     </form>
+    
+    <div class="row bg-light">
+      
+      <div class="col offerRide">
+        
+          <button class="btn btn-success rounded" routerLink="/offerRide"><i>Offer A Ride</i>
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
+    </div>
+  </div>
+    
   </div>
 </div>
 

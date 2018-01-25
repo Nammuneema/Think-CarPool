@@ -2,7 +2,7 @@
 
 <div class=" row bg-light registration rounded">
     <div class="col">
-        <form action="" method="post" id="fileForm" role="form">
+        <form action=""  id="fileForm" role="form" (ngSubmit) = "onSubmit(f)" #f=ngForm>
             <fieldset>
                 <legend class="text-center"><i>Registration</i><span class="req"></span></legend>
                 <hr>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input class="btn btn-success" type="submit" name="submit_reg" value="Register">
+                    <input class="btn btn-success" type="submit" ngModel name="submit_reg" value="Register">
                 </div>
                     
         </fieldset>
