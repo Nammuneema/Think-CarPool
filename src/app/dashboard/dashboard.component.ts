@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     this.getProfileDetails.getProfileRequest().subscribe(
       (response) => 
       {
-        this.userBasic = response;
+        this.userBasic = response.json();
         console.log(response);
       },
       (error) =>

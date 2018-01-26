@@ -1,14 +1,14 @@
 import { Router } from '@angular/router/';
 import { RequestService } from './../request.service';
 import { LogedInService } from './../loged-in.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,OnDestroy {
 
   constructor( private  loginService: LogedInService, private request : RequestService
   ,private router : Router) { }
@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
   logout()
   {
+    console.log("Ho RAha HE")
     this.request.logoutRequest().subscribe(
      (response)=>
      {
@@ -36,6 +37,9 @@ export class HeaderComponent implements OnInit {
     )
   }
 
-
+  ngOnDestroy()
+  {
+  
+  }
 
 }

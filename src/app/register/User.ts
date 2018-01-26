@@ -10,8 +10,6 @@ export class User
     gender : string;
     accountStatus : boolean;
     registrationDate : string;
-    rides : any[];
-    bookedRideDetails : any[];
     offerRiderDetails : any;
     varifiedUser : any;
 

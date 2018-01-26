@@ -8,38 +8,15 @@
         <div class="useravatar">
             <img class = "square" alt="" src="../assets/385545.jpg">
         </div>
-        <div class="card-info "> <span class="card-title">KyloRen</span>
+        <div class="card-info "> <span class="card-title">{{ userBasic.userName }}</span>
 
         </div>
     </div>
-    <!-- <div class="btn-pref btn-group btn-group-lg nav nav-tabs" role="group" aria-label="...">
-        <div class="btn-group nav-item" role="group">
-            <button type="button" id="Details" class="btn btn-primary btn-lg " href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">username</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="rideoffered" class="btn btn-default btn-lg" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">Ride Offered</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="ridebooked" class="btn btn-default btn-lg" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Ride Booked</div>
-            </button>
-        </div>
-        <div class="tab-content">
-            <div class="tab-pane active container" id="tab1">Deatils</div>
-            <div class="tab-pane container" id="tab2">offer</div>
-            <div class="tab-pane container" id="tab3">reide/div>
-          </div>
-        </div>
-    </div>
-     -->
+    
 
      <ul class="nav nav-pills bg-light">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#userProfile">User Name</a>
+          <a class="nav-link active" data-toggle="tab" href="#userProfile">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#bookedRide">Booked Ride</a>
@@ -52,9 +29,15 @@
       <!-- Tab panes -->
       <div class="tab-content bg-light">
         <div class="tab-pane active container" id="userProfile">
+            <div class="table-responsive">
             <table class="table">
-                <tr><td></td></tr>
+                <tr><td>Name</td> <td><i>{{ (userBasic.firstName +" " +userBasic.lastName) }}</i></td></tr>
+                <tr><td>Gender</td> <td>{{ userBasic.gender }}</td></tr>
+                <tr><td>Email</td> <td>{{ userBasic.email }}</td></tr>
+                <tr><td>Gender</td> <td>{{ userBasic.contactNo }}</td></tr>
+            
             </table>
+        </div>
         </div>
         <div class="tab-pane container" id="bookedRide">Booked ride</div>
         <div class="tab-pane container" id="offeredRide">Offered Ride details</div>
