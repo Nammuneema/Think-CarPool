@@ -21,10 +21,10 @@ export class RequestService {
   //1
   loginRequest(login : Login)
   {
-    return this.httpRequest.post('http://192.168.43.4:14718/thinkcar/request/login',login,this.httpGetOptions);
+    return this.httpRequest.post('http://localhost:9638/thinkcar/request/login',login,this.httpGetOptions);
   }
 
-  //2 192.168.43.4:14718
+  //2 localhost:9638
   registerRequest(user : User,login : Login){
 
     console.warn(login.userName)
@@ -35,27 +35,27 @@ export class RequestService {
     let test = new LoginHandler(user , login);
     console.warn(test);
     //localhost:9638
-    return this.httpRequest.post('http://192.168.43.4:14718/thinkcar/request/register',test,this.httpGetOptions)
+    return this.httpRequest.post('http://localhost:9638/thinkcar/request/register',test,this.httpGetOptions)
   }
 
   searchRideRequest(searchQuery : SearchQuery)
   {
-    return this.httpRequest.get("http://192.168.43.4:14718/thinkcar/request/search/"+searchQuery.source+"/"+searchQuery.destination+"/"+searchQuery.date,this.httpGetOptions);
+    return this.httpRequest.get("http://localhost:9638/thinkcar/request/search/"+searchQuery.source+"/"+searchQuery.destination+"/"+searchQuery.date,this.httpGetOptions);
   }
 
   updateProfileRequest(user : User)
   {
-    return this.httpRequest.post("http://192.168.43.4:14718/thinkcar/request/updateProfile",user,this.httpGetOptions);
+    return this.httpRequest.post("http://localhost:9638/thinkcar/request/updateProfile",user,this.httpGetOptions);
   }
 
   OfferRideRequest(offerRiderDetailsObj : OfferedRide)
   {
-    return this.httpRequest.post("http://192.168.43.4:14718/thinkcar/request/offer",offerRiderDetailsObj,this.httpGetOptions);
+    return this.httpRequest.post("http://localhost:9638/thinkcar/request/offer",offerRiderDetailsObj,this.httpGetOptions);
   }
 
   getProfileRequest()
   {
-    return this.httpRequest.get("http://192.168.43.4:14718/thinkcar/request/profile",this.httpGetOptions);
+    return this.httpRequest.get("http://localhost:9638/thinkcar/request/profile",this.httpGetOptions);
   }
 
   bookRideRequest(/*rideid , bookRideObj*/)
@@ -75,7 +75,7 @@ export class RequestService {
 
   logoutRequest()
   {
-    return this.httpRequest.post("http://192.168.43.4:14718/thinkcar/request/logout","",this.httpGetOptions);
+    return this.httpRequest.post("http://localhost:9638/thinkcar/request/logout","",this.httpGetOptions);
   }
 
 

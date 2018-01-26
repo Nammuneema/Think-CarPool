@@ -21,8 +21,8 @@
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" *ngIf="loginService.loginStatus"  >
-              Logout
+            <a class="nav-link" *ngIf="loginService.loginStatus" (click)="logout()"  style="cursor: pointer"  >
+              logOut
             </a>
           <a class="nav-link" *ngIf="!loginService.loginStatus" routerLink="/Register" routerLinkActive="active">Register</a>
         </li>
