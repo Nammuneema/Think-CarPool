@@ -1,4 +1,5 @@
 
+
 export class User
 {
     userName : string;
@@ -9,6 +10,10 @@ export class User
     gender : string;
     accountStatus : boolean;
     registrationDate : string;
+    rides : any[];
+    bookedRideDetails : any[];
+    offerRiderDetails : any;
+    varifiedUser : any;
 
 
     constructor(userName : string, firstName : string, lastName : string, email : string,
@@ -25,6 +30,8 @@ export class User
                     this.accountStatus = accountStatus;
                     this.registrationDate = registrationDate;
                 }
+
+    
    
     
 }

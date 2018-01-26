@@ -1,3 +1,4 @@
+import { LogedInService } from './../loged-in.service';
 import { SearchDataService } from '../search-data.service';
 
 import { Routes, RouterModule } from '@angular/router';
@@ -22,7 +23,6 @@ export class HomePageComponent implements OnInit {
 
   //constructor( ) { }
   constructor(private searchRequest : RequestService,
-    private route: ActivatedRoute,
     private router: Router,private searchDataService : SearchDataService
   ) {}
 

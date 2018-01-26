@@ -8,14 +8,10 @@ import { SearchDataService } from './search-data.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TestService]
+  
 })
 export class AppComponent {
   title = 'app';
   login : Login
-  constructor(private test : TestService) {} 
-
-  
-
 }
     

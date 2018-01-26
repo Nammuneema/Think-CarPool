@@ -1,3 +1,6 @@
+import { Router } from '@angular/router/';
+import { RequestService } from './../request.service';
+import { LogedInService } from './../loged-in.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor( private  loginService: LogedInService, private request : RequestService
+  ,private router : Router) { }
 
   ngOnInit() {
+    
   }
+
+  logout()
+  {
+    this.request.logoutRequest().subscribe(
+     (response)=>
+     {
+       console.log(response);
+     },
+     (error) =>
+     {
+        console.log(error);
+     }, 
+      ()=>
+      {
+        this.loginService.loginStatus=false;
+        this.router.navigate(['/']);
+      }
+    )
+  }
+
+
 
 }

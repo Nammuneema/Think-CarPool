@@ -1,8 +1,10 @@
+import { Router } from '@angular/router/';
+import { RequestService } from './../request.service';
 import { Login } from './../login/Login';
 import { User } from './User';
 import { Component, OnInit } from '@angular/core';
 import { TestService } from '../test.service';
-import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -11,18 +13,28 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class RegisterComponent implements OnInit {
   date : Date = new Date();
-  constructor(private test : TestService) { }
+  genders : string[] = ["MALE","FEMALE","OTHER"];
+  constructor(private request : RequestService, private router : Router) { }
 
   onSubmit(f : NgForm)
   {
-    f.value
-    this.test.testHttpRegister(new User("nam1237","Naman","Gupta",
-    "nammu.neema@gmail.com",
-    "9179368477","Male",true,"2018-01-24"),new Login("nam1237",1234)
-    ).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
+        let formData : any = f.value;
+        console.warn(formData);
+        let user : User = new User(formData.username,formData.firstName,formData.lastName,formData.email
+          ,formData.phoneNumber,formData.gender,true,this.date.toDateString());
+          let login : Login = new Login(formData.username,formData.password);
+          console.log(user.userName + " " + login .userName+ " "+ login.password +" " + this.date.toLocaleDateString("en-US"));
+    this.request.registerRequest(user,login).subscribe(
+      (response) =>
+      {
+        console.log(response);
+        this.router.navigate(["/Login"]);
+
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {

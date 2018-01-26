@@ -14,11 +14,17 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>
+        <li class="nav-item" >
+          <a class="nav-link" *ngIf="!loginService.loginStatus"routerLink="/Login" routerLinkActive="active">Login</a>
+          <a class="nav-link" *ngIf="loginService.loginStatus"routerLink="/dashboard" routerLinkActive="active">
+            {{ loginService.userName }}
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/Register" routerLinkActive="active">Register</a>
+            <a class="nav-link" *ngIf="loginService.loginStatus"  >
+              Logout
+            </a>
+          <a class="nav-link" *ngIf="!loginService.loginStatus" routerLink="/Register" routerLinkActive="active">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"></a>

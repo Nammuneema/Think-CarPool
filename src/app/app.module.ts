@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms'
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OfferedRide } from './search-results/OfferedRide';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LogedInService } from './loged-in.service';
 
 
 const appRoutes: Routes = [
@@ -103,11 +104,10 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [TestService,RequestService,SearchDataService],
+  providers: [TestService,RequestService,SearchDataService,LogedInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-
-
-  constructor(private searchDataService : SearchDataService){}
+  constructor(private searchDataService : SearchDataService , private request : RequestService,
+  private  loginService: LogedInService){}
 }
