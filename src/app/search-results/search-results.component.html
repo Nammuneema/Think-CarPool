@@ -28,7 +28,7 @@
         <h4 class="card-title">{{ (userDetails.firstName + " " + userDetails.lastName) }}</h4>
         <p class="card-text">{{ userDetails.contactNo }}</p>
         <input type="text"  name="noOfSeats" id="noOfSeats" [(ngModel)]=noOfSeats >
-        <a class="btn btn-primary" (click)="bookRide(noOfSeats)">Book Ride</a>
+        <a class="btn btn-primary" (click)="bookRide()">Book Ride</a>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./offerride.component.css']
 })
 export class OfferrideComponent implements OnInit {
-
+  
   constructor(private offerRideRequest : RequestService) { }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class OfferrideComponent implements OnInit {
 
   onSubmit(formData : NgForm)
   {
-    let val =8;
+    //let val = 8;
     let offerRiderDetailsObj : OfferedRide = formData.value;
     //offerRiderDetailsObj.rideId = 0;
     offerRiderDetailsObj.totalSeats=8;
