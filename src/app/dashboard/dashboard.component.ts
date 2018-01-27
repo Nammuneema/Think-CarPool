@@ -2,7 +2,6 @@ import { Router } from '@angular/router/';
 import { LogedInService } from './../loged-in.service';
 import { RequestService } from './../request.service';
 import { Component, OnInit } from '@angular/core';
-import { request } from 'http';
 
 @Component({
   selector: 'app-dashboard',
@@ -61,7 +60,7 @@ export class DashboardComponent implements OnInit {
       error =>
       {
         console.log(error);
-        
+
       }
     )
   }
@@ -69,8 +68,6 @@ export class DashboardComponent implements OnInit {
   else
   {
     this.router.navigate(["/Login"]);
+  } 
   }
-    
-  }
-
 }
