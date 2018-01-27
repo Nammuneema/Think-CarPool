@@ -34,7 +34,8 @@
     "ngx-cookie-service": "^1.0.10",
     "rxjs": "^5.5.6",
     "tether": "^1.4.3",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
     "@angular/cli": "1.6.5",
