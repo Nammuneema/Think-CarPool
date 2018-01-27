@@ -1,5 +1,5 @@
 
-<div class="col-lg-6 col-sm-6 dashboard">
+<div class="col-lg-6 col-sm-6 dashboard tabcontent">
     <div class="card hovercard">
         <div class="card-background">
             <img class="card-bkimg" src="../assets/385545.jpg" alt="" >
@@ -8,29 +8,29 @@
         <div class="useravatar">
             <img class = "square" alt="" src="../assets/385545.jpg">
         </div>
-        <div class="card-info "> <span class="card-title">{{ userBasic.userName }}</span>
+        <div class="card-info "> <span class="card-title"><i>{{ userBasic.userName }}</i></span>
 
         </div>
     </div>
     
 
-     <ul class="nav nav-pills bg-light">
+     <ul class="nav nav-pills bg-light nav-fill ">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#userProfile">Profile</a>
+          <a class="nav-link active" data-toggle="tab" href="#userProfile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#bookedRide">Booked Ride</a>
+          <a class="nav-link" data-toggle="tab" href="#bookedRide"><i class=" ion-model-s" aria-hidden="true" style="height:48px;width: 48px "></i> Booked Ride</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#offeredRide">Offered Ride</a>
+          <a class="nav-link" data-toggle="tab" href="#offeredRide"><i class="fa fa-plus-circle" aria-hidden="true"></i> Offered Ride</a>
         </li>
       </ul>
       
       <!-- Tab panes -->
-      <div class="tab-content bg-light">
-        <div class="tab-pane active container" id="userProfile">
-            <div class="table-responsive">
-            <table class="table">
+      <div class="tab-content bg-light rounded-bottom ">
+        <div class="tab-pane active container tabcontent" id="userProfile">
+            <div class="table-responsive ">
+            <table class="table ">
                 <tr><td>Name</td> <td><i>{{ (userBasic.firstName +" " +userBasic.lastName) }}</i></td></tr>
                 <tr><td>Gender</td> <td>{{ userBasic.gender }}</td></tr>
                 <tr><td>Email</td> <td>{{ userBasic.email }}</td></tr>
@@ -39,8 +39,31 @@
             </table>
         </div>
         </div>
-        <div class="tab-pane container" id="bookedRide">Booked ride</div>
-        <div class="tab-pane container" id="offeredRide">Offered Ride details</div>
+        <div class="tab-pane container tabcontent" id="bookedRide">
+
+                <div class="table-responsive ">
+                        <table class="table ">
+                            <tr *ngFor="let booked of userBookedRide">
+                                <td>{{ booked.offerRide.source }}</td>
+                                <td>{{ booked.offerRide.destination }}</td>
+                                <td>{{ booked.offerRide.date }}</td>
+                            </tr>
+                        
+                        </table>
+                    </div>
+        </div>
+        <div class="tab-pane container tabcontent" id="offeredRide">
+                <div class="table-responsive ">
+                        <table class="table ">
+                            <tr *ngFor="let offered of userOfferedRide">
+                                <td>{{ offered.source }}</td>
+                                <td>{{ offered.destination }}</td>
+                                <td>{{ offered.date }}</td>
+                            </tr>
+                        
+                        </table>
+                    </div>
+        </div>
       </div>
      
       

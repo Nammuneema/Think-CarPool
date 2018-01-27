@@ -19,6 +19,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { OfferedRide } from './search-results/OfferedRide';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LogedInService } from './loged-in.service';
+import { ModalComponent } from './modal/modal.component';
+import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
 
 
 const appRoutes: Routes = [
@@ -93,7 +96,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     NotFoundComponent,
     OfferrideComponent,
-    DashboardComponent
+    DashboardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -102,12 +106,16 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    NgbModule.forRoot()
   ],
-  providers: [TestService,RequestService,SearchDataService,LogedInService],
-  bootstrap: [AppComponent]
+  providers: [RequestService,SearchDataService,LogedInService,CookieService],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalComponent,
+    ]
 })
 export class AppModule { 
   constructor(private searchDataService : SearchDataService , private request : RequestService,
-  private  loginService: LogedInService){}
+  private  loginService: LogedInService ,private cookiesForSession : CookieService){}
 }

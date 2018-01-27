@@ -1,8 +1,9 @@
 import { RequestService } from './request.service';
 import { TestService } from './test.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Login } from './login/Login';
 import { SearchDataService } from './search-data.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,19 @@ import { SearchDataService } from './search-data.service';
   styleUrls: ['./app.component.css'],
   
 })
-export class AppComponent {
-  title = 'app';
-  login : Login
+export class AppComponent implements OnInit {
+  title = 'Think CarPool';
+  constructor(private cookies : CookieService)
+  {}
+  cookieValue : any;
+
+  ngOnInit(): void {
+    if(!this.cookies.check('loginStatus'))
+    {
+      this.cookies.set( 'loginStatus','false' );
+    }
+
+  }
+
 }
     

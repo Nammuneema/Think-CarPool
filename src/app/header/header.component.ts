@@ -2,6 +2,7 @@ import { Router } from '@angular/router/';
 import { RequestService } from './../request.service';
 import { LogedInService } from './../loged-in.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,18 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit,OnDestroy {
-
+  loginStatus : boolean;
+  userName : string;
   constructor( private  loginService: LogedInService, private request : RequestService
-  ,private router : Router) { }
+  ,private router : Router , private cookies : CookieService) { }
 
   ngOnInit() {
-    
+    //console.warn("Header ka hun " + (this.cookies.get("loginStatus") === "true") );
+    //this.loginStatus = (this.cookies.get("loginStatus") === "true" );
+    // if(this.loginStatus)
+    // {
+    //   this.userName = this.cookies.get("userName");
+    // }
   }
 
   logout()
@@ -31,7 +38,9 @@ export class HeaderComponent implements OnInit,OnDestroy {
      }, 
       ()=>
       {
-        this.loginService.loginStatus=false;
+        this.loginService.loginStatus = false;
+       this.cookies.set("loginStatus","false");
+        this.cookies.delete("userName");
         this.router.navigate(['/']);
       }
     )
@@ -39,7 +48,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
 
   ngOnDestroy()
   {
-  
+    
   }
 
 }

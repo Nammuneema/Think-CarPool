@@ -21,10 +21,10 @@ export class RequestService {
   //1
   loginRequest(login : Login)
   {
-    return this.httpRequest.post('http://localhost:9638/thinkcar/request/login',login,this.httpGetOptions);
+    return this.httpRequest.post('http://192.168.0.111:14718/thinkcar/request/login',login,this.httpGetOptions);
   }
 
-  //2 localhost:9638
+  //2 192.168.0.111:14718
   registerRequest(user : User,login : Login){
 
     console.warn(login.userName)
@@ -34,48 +34,56 @@ export class RequestService {
     }
     let test = new LoginHandler(user , login);
     console.warn(test);
-    //localhost:9638
-    return this.httpRequest.post('http://localhost:9638/thinkcar/request/register',test,this.httpGetOptions)
+    //192.168.0.111:14718
+    return this.httpRequest.post('http://192.168.0.111:14718/thinkcar/request/register',test,this.httpGetOptions)
   }
 
   searchRideRequest(searchQuery : SearchQuery)
   {
-    return this.httpRequest.get("http://localhost:9638/thinkcar/request/search/"+searchQuery.source+"/"+searchQuery.destination+"/"+searchQuery.date,this.httpGetOptions);
+    return this.httpRequest.get("http://192.168.0.111:14718/thinkcar/request/search/"+searchQuery.source+"/"+searchQuery.destination+"/"+searchQuery.date,this.httpGetOptions);
   }
 
   updateProfileRequest(user : User)
   {
-    return this.httpRequest.post("http://localhost:9638/thinkcar/request/updateProfile",user,this.httpGetOptions);
+    return this.httpRequest.post("http://192.168.0.111:14718/thinkcar/request/updateProfile",user,this.httpGetOptions);
   }
 
   OfferRideRequest(offerRiderDetailsObj : OfferedRide)
   {
-    return this.httpRequest.post("http://localhost:9638/thinkcar/request/offer",offerRiderDetailsObj,this.httpGetOptions);
+    return this.httpRequest.post("http://192.168.0.111:14718/thinkcar/request/offer",offerRiderDetailsObj,this.httpGetOptions);
   }
 
   getProfileRequest()
   {
-    return this.httpRequest.get("http://localhost:9638/thinkcar/request/profile",this.httpGetOptions);
+    return this.httpRequest.get("http://192.168.0.111:14718/thinkcar/request/profile",this.httpGetOptions);
   }
 
-  bookRideRequest(/*rideid , bookRideObj*/)
+  
+  getProfile(userName)
   {
-    return this.httpRequest.post("http://localhost:9638/thinkcar/request/bookride",null,this.httpGetOptions);
+    return this.httpRequest.get("http://192.168.0.111:14718/thinkcar/request/userdetail/"+userName,this.httpGetOptions);
+  }
+
+  bookRideRequest(id,noOfSeats)
+  {
+    let bookRide = {"rideId":id,
+                "noOfSeats": noOfSeats}
+    return this.httpRequest.post("http://192.168.0.111:14718/thinkcar/request/bookride",bookRide,this.httpGetOptions);
   }
 
   listedRideRequest()
   {
-    return this.httpRequest.get("http://localhost:9638/thinkcar/request/listedrides");
+    return this.httpRequest.get("http://192.168.0.111:14718/thinkcar/request/listedrides",this.httpGetOptions);
   }
 
   bookingDetailsRequest()
   {
-    return this.httpRequest.get("/bookingdetails");
+    return this.httpRequest.get("http://192.168.0.111:14718/thinkcar/request/bookingdetails",this.httpGetOptions);
   }
 
   logoutRequest()
   {
-    return this.httpRequest.post("http://localhost:9638/thinkcar/request/logout","",this.httpGetOptions);
+    return this.httpRequest.post("http://192.168.0.111:14718/thinkcar/request/logout","",this.httpGetOptions);
   }
 
 
