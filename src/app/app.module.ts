@@ -22,6 +22,7 @@ import { LogedInService } from './loged-in.service';
 import { ModalComponent } from './modal/modal.component';
 import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
+import { PasswordCahngeComponent } from './password-cahnge/password-cahnge.component';
 
 
 const appRoutes: Routes = [
@@ -73,6 +74,11 @@ const appRoutes: Routes = [
     component : DashboardComponent,
     data :{title:"DashBoard"}
   },
+  {
+    path : "changePassword",
+    component : PasswordCahngeComponent,
+    data :{title:"Change Password"}
+  },
 
   {
     path: '**',
@@ -97,7 +103,8 @@ const appRoutes: Routes = [
     NotFoundComponent,
     OfferrideComponent,
     DashboardComponent,
-    ModalComponent
+    ModalComponent,
+    PasswordCahngeComponent
   ],
   imports: [
     BrowserModule,

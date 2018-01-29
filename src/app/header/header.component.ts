@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderComponent implements OnInit,OnDestroy {
   loginStatus : boolean;
   userName : string;
-  constructor( public  loginService: LogedInService, private request : RequestService
+  constructor( private  loginService: LogedInService, private request : RequestService
   ,private router : Router , private cookies : CookieService) { }
 
   ngOnInit() {

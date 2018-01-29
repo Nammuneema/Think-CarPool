@@ -1,4 +1,4 @@
-<br>
+<!-- <br>
 
 <div class=" row bg-light registration rounded tabcontent">
     <div class="col">
@@ -72,6 +72,110 @@
 
                 <div class="form-group">
                     <input class="btn btn-success" type="submit"  name="submit_reg" value="Register">
+                </div>
+                    
+        </fieldset>
+        </form>
+
+    </div>
+
+</div>
+ -->
+
+ <br>
+
+<div class=" row bg-light registration rounded tabcontent">
+    <div class="col">
+        <form action="" name="formValidation" id="fileForm" role="form" (ngSubmit) = "onSubmit(f)" #f=ngForm>
+            <fieldset>
+                <legend class="text-center"><i>Registration</i><span class="req"></span></legend>
+                <hr>
+                <div>
+                <div class="form-group" ngFormGroup="user">
+                        <label for="userName"> User name :  </label> 
+                        <input class="form-control" type="text" ngModel name="username" id="userName"  #userName = "ngModel" (change)="log(userName)" 
+                        minlength="6" maxlength="10" placeholder="minimum 6 letters" required ngFormGroup="login">  
+                        <div id="userNameError" class="alert alert-danger" *ngIf="!userName.valid && userName.touched" >
+                        <div *ngIf="userName.errors.required">User Name is required</div>   
+                        <div *ngIf="userName.errors.minlength">User Name must be minimum 6 charecters</div> 
+                        <div *ngIf="userName.errors.maxlength">User Name must be maximum 10 charecters</div> 
+                        </div>                             
+                </div>     
+                
+
+                <div class="form-group" ngFormGroup="user"> 	 
+                    <label for="firstName"> First name : </label>
+                    <input class="form-control" type="text" ngModel name="firstName" id="firstName"  #firstName = "ngModel" (change)="log(firstName)"required=""> 
+                    <div id="firstNameError" class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched" >First Name is required</div>     
+                </div>
+
+                <div class="form-group" ngFormGroup="user">
+                    <label for="lastName"> Last name : </label> 
+                    <input class="form-control" type="text" ngModel name="lastName" id="lastName"  #lastName = "ngModel" (change)="log(lastName)" required="">  
+                    <div id="lastNameError" class="alert alert-danger" *ngIf="!lastName.valid && lastName.touched" >Last Name is required</div>     
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group " ngFormGroup="user">
+                    <label for="gender"style="position:relative; left :10% ;margin-bottom: 10%">Select Gender</label>
+                    <div class="radio col-md-12 form-inline"  >
+
+                        <div *ngFor="let gender of genders">
+                            <input type="radio" name="gender" ngModel [value]="gender" required>
+                            {{ gender }}&emsp;
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                    <div class="radio col-sm-6" style="position:relative; left: 10%; " ngFormGroup="user">
+                            <label for="phoneNumber" > Phone Number : </label>
+                            <input required="" type="text" ngModel name="phoneNumber" id="phoneNumber" class="form-control input-sm " #phoneNumber = "ngModel" (change)="log(phoneNumber)"
+                            minlength="10" maxlength="10" placeholder="Enter your phone Number">
+                            <div id="phoneNumberError" class="alert alert-danger" *ngIf="!phoneNumber.valid && phoneNumber.touched" >
+                                    <div *ngIf="userName.errors.required">Phone Number is required</div>       
+                                    <div *ngIf="phoneNumber.errors.minlength">Phone number must be minimum 10 digits</div> 
+                            </div>
+                    </div>
+                </div>
+                <div class="form-group" ngFormGroup="user">
+                    <label for="email" > Email Address : </label> 
+                    <input class="form-control" required="" type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ngModel name="email" id="email"  #email = "ngModel" (change)="log(email)" required >   
+                    <div id="email" class="alert alert-danger" *ngIf="!email.valid && email.touched" >
+                            <div *ngIf="email.errors.required">Email is required</div> 
+                            <div *ngIf="email.errors.pattern">Email must be valid</div>
+                    </div>
+                </div>
+
+            </div>
+            
+                <div class="form-group" ngFormGroup="login">
+                    <label for="password">Password : </label>
+                    <input required="" ngModel name="password" type="password" class="form-control" minlength="4" maxlength="20" #p="ngModel"  id="password" #password = "ngModel" (change)="log(password)"> 
+                    <div id="password" class="alert alert-danger" *ngIf="!password.valid && password.touched" >
+                            <div *ngIf="password.errors.required">Password is required</div> 
+                    </div>
+
+                    <label for="password"> Password Confirm : </label>
+                    <input required="" ngModel name="password2" pattern="{{p.value}}" type="password" class="form-control " minlength="4" maxlength="20" 
+                    placeholder="Enter again to validate" id="pass2"  #pass2 = "ngModel" (change)="log(pass2)">
+                    <div id="passwordError2" class="alert alert-danger" *ngIf="!pass2.valid && pass2.touched" >
+                            <div *ngIf="pass2.errors.required">Password is required</div> 
+                            <div *ngIf="pass2.errors.pattern">Password not same</div> 
+                            <div *ngIf="pass2.errors.minlength">Password too short</div> 
+                    </div>
+                </div>
+               
+
+                <div class="form-group ">
+                    
+                    <hr>
+
+                    <input type="checkbox" required="" ngModel name="terms"  id="field_terms"> &nbsp; <label for="terms">I agree with the terms and conditions for Registration.</label>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-success" [disabled]="!f.valid" type="submit"  name="submit_reg" value="Register">
                 </div>
                     
         </fieldset>

@@ -1,4 +1,4 @@
-<div class="row bg-light login rounded tabcontent">
+<!-- <div class="row bg-light login rounded tabcontent">
   <div class="panel ">
     <div class="panel-heading" style="margin-left:40%;font-size: 17px; color: rgb(76, 81, 82)"><i>Login</i></div>
     
@@ -15,6 +15,42 @@
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" ngModel name="password" class="form-control"  placeholder="Password">
+          </div>
+         
+          <hr>
+          <button type="submit"  class="btn btn-secondry" style="margin-bottom: 14px;" data-toggle="modal" data-target="#myModal">Login</button>
+
+        </form>
+
+        
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row bg-light login rounded tabcontent">
+  <div class="panel ">
+    <div class="panel-heading" style="margin-left:40%;font-size: 17px; color: rgb(76, 81, 82)"><i>Login</i></div>
+    
+    <div class="panel-body">
+        
+      <div class="col ">
+          <hr><form (ngSubmit)="onSubmit(f)" #f=ngForm>
+          <div class="form-group ">
+            <label for="exampleInputEmail1" style="margin-top: 12px">User Name</label>
+            <input type="text" ngModel name="userName"class="form-control"   
+            aria-describedby="emailHelp" placeholder="Enter user name" required #userName = "ngModel" (change)="log(userName)" >
+            <small id="emailHelp" class="form-text text-muted" style="margin-right: 50px">Your User Name Must Be unique&emsp;&emsp;&emsp;</small>
+            <div id="userNameError" class="alert alert-danger" *ngIf="!userName.valid && userName.touched" >
+                <div *ngIf="userName.errors.required">user name is required </div>   
+                </div>  
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" ngModel name="password" class="form-control"  placeholder="Password" required #Password = "ngModel" (change)="log(Password)">
+            <div id="passwordError" class="alert alert-danger" *ngIf="!Password.valid && Password.touched" >
+                <div *ngIf="Password.errors.required">Password is required</div>   
+            </div>
           </div>
           <!-- <div class="form-check">
             <input type="checkbox" class="form-check-input" id="keepMeLogin">

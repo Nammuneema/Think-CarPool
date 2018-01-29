@@ -1,3 +1,4 @@
+import { LogedInService } from './../loged-in.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './../modal/modal.component';
 import { SearchDataService } from './../search-data.service';
@@ -20,14 +21,18 @@ import { Input } from '@angular/core';
 export class SearchResultsComponent implements OnInit {
   @Input('id') data : any[]
   resultDemo : OfferedRide[] ;
-  userDetails : any;
+  userDetails : any = {firstName : "",
+                      lastName : "",
+                      conactNo : ""};
   noOfSeats;
   rideId;
+  totalSeats;
+  
  
   
   
   constructor(private searchRequest : RequestService , private router : Router ,
-    private modalService:NgbModal, private searchDataSearvice : SearchDataService )
+    private modalService:NgbModal, private searchDataSearvice : SearchDataService,private loginService : LogedInService )
   {}
    
 
@@ -58,19 +63,36 @@ export class SearchResultsComponent implements OnInit {
   bookRide()
   {
     console.log(this.noOfSeats);
-    this.searchRequest.bookRideRequest(this.rideId,this.noOfSeats).subscribe(
-      response => 
-      {
-        console.log(response);
-        const modalRef = this.modalService.open(ModalComponent);
-        modalRef.componentInstance.errorType = 'Invalid user name or password';
-        this.router.navigate(["/"]);
-      },
-      error => 
-      {
-        console.log(error);
-      }
-    )
+
+    if(this.loginService.loginStatus)
+    {
+      this.searchRequest.bookRideRequest(this.rideId,this.noOfSeats).subscribe(
+        response => 
+        {
+          console.log(response);
+          if(response.status === 200)
+          {
+            const modalRef = this.modalService.open(ModalComponent);
+            modalRef.componentInstance.errorType = 'Ride Booked Successfully';
+            this.router.navigate(["/"]);
+        }
+        else
+        {
+          const modalRef = this.modalService.open(ModalComponent);
+            modalRef.componentInstance.errorType = 'Problem with the entered no of Seat';
+        }
+        },
+        error => 
+        {
+          console.log(error);
+        }
+      );
+    }
+    else{
+      const modalRef = this.modalService.open(ModalComponent);
+            modalRef.componentInstance.errorType = 'You Need to login first';
+            this.router.navigate(["/Login"]);
+    }
   }
  
   

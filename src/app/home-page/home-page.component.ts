@@ -1,3 +1,5 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './../modal/modal.component';
 import { LogedInService } from './../loged-in.service';
 import { SearchDataService } from '../search-data.service';
 
@@ -23,7 +25,8 @@ export class HomePageComponent implements OnInit {
 
   //constructor( ) { }
   constructor(private searchRequest : RequestService,
-    private router: Router,private searchDataService : SearchDataService
+    private router: Router,private searchDataService : SearchDataService,
+    private modalService : NgbModal
   ) {}
 
 
@@ -43,8 +46,16 @@ export class HomePageComponent implements OnInit {
       (response ) =>
        {
           console.log(response);
-          this.searchDataService.data = response.json();
-          this.router.navigate(['/Result']);
+          if(response.status === 200)
+          {
+            this.searchDataService.data = response.json();
+            this.router.navigate(['/Result']);
+          }
+          else
+          {
+            const modalRef = this.modalService.open(ModalComponent);
+            modalRef.componentInstance.errorType = 'No Ride Found';
+          }
       },
       (error) => console.log(error)
     );

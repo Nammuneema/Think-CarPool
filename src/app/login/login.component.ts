@@ -55,12 +55,17 @@ export class LoginComponent implements OnInit ,OnDestroy {
             this.cookies.set("userName" , username._body);
             this.router.navigate(["/dashboard"]);
             }
+            else
+            {
+              const modalRef = this.modalService.open(ModalComponent);
+              modalRef.componentInstance.errorType = 'Invalid user name or password';
+            }
                     
           }   
           ,error =>
           {
             const modalRef = this.modalService.open(ModalComponent);
-              modalRef.componentInstance.errorType = 'Invalid user name or password';
+              modalRef.componentInstance.errorType = 'Somthing wrong on server side';
 
           }
     )

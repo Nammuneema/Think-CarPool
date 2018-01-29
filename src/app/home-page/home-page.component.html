@@ -1,4 +1,4 @@
-<div class="row searchHome tabcontent">
+<!-- <div class="row searchHome tabcontent">
   <div class="col">
     <form class="form-inline" (ngSubmit)="onSearch(f)" #f="ngForm">
       <input class="form-control" type="search" ngModel name="source" id="source"  placeholder="Leave From" required="">
@@ -13,6 +13,40 @@
         <br>
         <br style="margin-bottom: 50%">
           
+    </form>
+    
+    <div class="row bg-light">
+      
+      <div class="col offerRide">
+        
+          <button class="btn btn-success rounded" routerLink="/offerRide"><i>Offer A Ride</i>
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
+    </div>
+  </div>
+    
+  </div>
+</div>
+ -->
+
+
+
+ <div class="row searchHome tabcontent">
+  <div class="col">
+    <form class="form-inline" (ngSubmit)="onSearch(f)" #f="ngForm">
+      <input class="form-control" type="search" ngModel name="source" id="source"  placeholder="Leave From" required>
+      
+      &emsp;<input class="form-control" type="search" ngModel name="destination" id="destination"  placeholder="Going To" required="">
+      &emsp;<input class="form-control" type="date" ngModel name="date" id="date"  placeholder="Going To" required="" min="2018-01-28">
+      
+      &emsp;<button class="btn btn-primary" [disabled]="!f.valid" type="submit">
+          <i>Search</i>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <br>
+        <br>
+        <br style="margin-bottom: 50%">
+        
     </form>
     
     <div class="row bg-light">
